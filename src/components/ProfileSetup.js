@@ -1,69 +1,30 @@
-import React, { useState } from 'react';
-import ParentDashboard from './ParentDashboard';
-import ChildDashboard from './ChildDashboard';
+import React, { useState, useEffect } from "react";
+import ParentDashboard from "./ParentDashboard";
+import ChildDashboard from "./ChildDashboard";
+import "../components/styles/signup.css";
 
 function ProfileSetup() {
-    const [role, setRole] = useState('');
-    const [teamName, setTeamName] = useState('');
-    const [profileComplete, setProfileComplete] = useState(false);
+  const storedUser = JSON.parse(localStorage.getItem("currentUser")) || null;
 
-    const handleRoleChange = (e) => {
-        setRole(e.target.value);
-    };
-
-    const handleTeamNameChange = (e) => {
-        setTeamName(e.target.value);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (role === 'parent' && teamName) {
-            setProfileComplete(true);
-        } else if (role === 'child') {
-            setProfileComplete(true);
-        } else {
-            alert('Please select a role and provide a team name if you are a parent.');
-        }
-    };
-
-    // Conditionally render the dashboards based on the user's role
-    if (profileComplete) {
-        return role === 'parent' ? <ParentDashboard /> : <ChildDashboard />;
+  // If the user is already part of a team, skip profile setup
+  const [profileComplete, setProfileComplete] = useState(storedUser?.teamId ? true : false);
+  
+  useEffect(() => {
+    if (storedUser && storedUser.teamId) {
+      setProfileComplete(true);
     }
+  }, [storedUser]);
 
-    return (
-        <div>
-            <h2>Profile Setup</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>
-                        Select Role:
-                        <select value={role} onChange={handleRoleChange}>
-                            <option value="">Select...</option>
-                            <option value="parent">Parent</option>
-                            <option value="child">Child</option>
-                        </select>
-                    </label>
-                </div>
-                
-                {role === 'parent' && (
-                    <div>
-                        <label>
-                            Team Name:
-                            <input
-                                type="text"
-                                value={teamName}
-                                onChange={handleTeamNameChange}
-                                placeholder="Enter your team name"
-                            />
-                        </label>
-                    </div>
-                )}
-                
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    );
+  if (profileComplete) {
+    return storedUser.role === "Parent" ? <ParentDashboard /> : <ChildDashboard />;
+  }
+
+  return (
+    <div className="signup-container">
+      <h2>Profile Setup</h2>
+      <p>You shouldn't see this screen. Something went wrong.</p>
+    </div>
+  );
 }
 
 export default ProfileSetup;
