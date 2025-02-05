@@ -9,13 +9,13 @@ body {
   overflow-y: auto; /* Enable vertical scrolling if content overflows */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-
+ 
 /* Dark mode theme */
 body.dark-mode {
   background-color: #2e2e2e;
   color: #f9f9f9;
 }
-
+ 
 /* Centering the content */
 .App {
   width: 100%;
@@ -29,23 +29,23 @@ body.dark-mode {
   background-color: white;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
-
+ 
 body.dark-mode .App {
   background-color: #444;
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
-
+ 
 /* Heading styling */
 h2, h3 {
   color: #007bff;
   font-size: 2rem;
   margin-bottom: 20px;
 }
-
+ 
 body.dark-mode h2, body.dark-mode h3 {
   color: #80bdff;
 }
-
+ 
 /* 3D Button styles */
 button {
   padding: 15px 25px;
@@ -60,25 +60,25 @@ button {
   box-shadow: 0 4px #0056b3;
   transition: all 0.2s ease;
 }
-
+ 
 button:active {
   box-shadow: 0 2px #0056b3;
   transform: translateY(2px);
 }
-
+ 
 button:hover {
   background-color: #0056b3;
 }
-
+ 
 body.dark-mode button {
   background-color: #0066cc;
   box-shadow: 0 4px #003d66;
 }
-
+ 
 body.dark-mode button:hover {
   background-color: #0056b3;
 }
-
+ 
 /* Input fields */
 input {
   padding: 15px;
@@ -89,19 +89,19 @@ input {
   width: 80%;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-
+ 
 input:focus {
   outline: none;
   border-color: #007bff;
 }
-
+ 
 /* Chore and message list */
 ul {
   list-style-type: none;
   padding: 0;
   margin: 20px 0;
 }
-
+ 
 li {
   font-size: 1.5rem;
   margin: 10px 0;
@@ -111,13 +111,13 @@ li {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.2s;
 }
-
+ 
 body.dark-mode li {
   background-color: #555;
   color: #f9f9f9;
   box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
 }
-
+ 
 /* Modal Styles */
 .modal-overlay {
   position: fixed;
@@ -131,7 +131,7 @@ body.dark-mode li {
   align-items: center;
   z-index: 1000;
 }
-
+ 
 .modal-content {
   background-color: white;
   padding: 20px;
@@ -141,11 +141,11 @@ body.dark-mode li {
   text-align: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
-
+ 
 .modal-content h3 {
   margin-bottom: 20px;
 }
-
+ 
 .modal-content button {
   margin-top: 20px;
   padding: 10px 20px;
@@ -155,7 +155,7 @@ body.dark-mode li {
   border-radius: 5px;
   cursor: pointer;
 }
-
+ 
 .modal-content button:hover {
   background-color: #0056b3;
 }
