@@ -1,17 +1,17 @@
 import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SignUp from './components/SignUp';
-import ProfileSetup from './components/ProfileSetup';
-import ParentDashboard from './components/ParentDashboard';
-import ChildDashboard from './components/ChildDashboard';
+import ProfileSetup from '../src/components/ProfileSetup';
+import ParentDashboard from '../src/components/ParentDashboard';
+import ChildDashboard from '../src/components/ChildDashboard';
 
 function App() {
-    const [darkMode, setDarkMode] = useState(false);
+    const [darkMode, setDarkMode] = useState(false); // Track dark mode
 
+    // Toggle dark mode
     const toggleDarkMode = () => {
         setDarkMode(!darkMode);
-        document.body.classList.toggle('dark-mode', !darkMode);
+        document.body.classList.toggle('dark-mode', !darkMode); // Add/remove dark mode class
     };
 
     return (
@@ -22,8 +22,7 @@ function App() {
                 </button>
                 
                 <Routes>
-                    <Route path="/" element={<SignUp />} /> {/* Start with SignUp */}
-                    <Route path="/profile-setup" element={<ProfileSetup />} /> {/* Navigate here after SignUp */}
+                    <Route path="/" element={<ProfileSetup />} />
                     <Route path="/parent-dashboard" element={<ParentDashboard />} />
                     <Route path="/child-dashboard" element={<ChildDashboard />} />
                 </Routes>
