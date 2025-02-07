@@ -76,6 +76,7 @@ function App() {
         return (
             <Routes>
                 <Route path="/" element={<SignIn onSignInSuccess={handleSignInSuccess} />} />
+                <Route path="/signup" element={<SignUp />} />
                 <Route path="/profile-setup" element={<ProfileSetup />} />
                 <Route path="/parent-dashboard" element={<ParentDashboard />} />
                 <Route path="/child-dashboard" element={<ChildDashboard />} />
@@ -103,6 +104,7 @@ function App() {
                         <button onClick={() => {
                             logoutUser();
                             setCurrentUser(null);
+                            window.location.href = "/"; // Redirect to sign-in page
                         }}>Logout</button>
                     )}
                 </div>

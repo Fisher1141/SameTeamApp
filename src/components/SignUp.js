@@ -3,13 +3,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import bcrypt from "bcryptjs";
-import { getUsers, initializeLocalStorage } from "./utils/localStorageUtils";
+import { getUsers, saveUsers, initializeLocalStorage } from "./utils/localStorageUtils";
 import "../components/styles/signup.css";
-
-// Function to update users in localStorage
-const saveUsers = (users) => {
-  localStorage.setItem("users", JSON.stringify(users));
-};
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -29,7 +24,7 @@ const SignUp = () => {
     e.preventDefault();
     const { username, email, password, role, team } = formData;
     
-    const users = getUsers();
+    const users = getUsers(); // Fetch users from localStorage
     if (users.some((user) => user.email.toLowerCase() === email.toLowerCase())) {
       setErrors("Email already registered.");
       return;
@@ -37,8 +32,8 @@ const SignUp = () => {
 
     const hashedPassword = bcrypt.hashSync(password, 10);
     users.push({ username, email, password: hashedPassword, role, team });
-    saveUsers(users);
-    
+    saveUsers(users); // ✅ Properly update users in localStorage
+
     alert("Sign-up successful! Proceeding to profile setup...");
     navigate("/profile-setup");
   };

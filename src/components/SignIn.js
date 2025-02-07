@@ -2,11 +2,13 @@
 
 import React, { useState } from "react";
 import { authenticateUser } from "../components/utils/localStorageUtils"; // ✅ Ensure correct import path
+import { useNavigate } from "react-router-dom";
 import "../components/styles/signup.css";
 
 const SignIn = ({ onSignInSuccess }) => {
   const [formData, setFormData] = useState({ email: "", password: "" }); // ✅ State for login form inputs
   const [error, setError] = useState(""); // ✅ State to track login errors
+  const navigate = useNavigate();
 
   // ✅ Handle Login Form Submission
   const handleLogin = (e) => {
@@ -49,7 +51,6 @@ const SignIn = ({ onSignInSuccess }) => {
     } else {
       console.error("onSignInSuccess function is not provided");
     }
-
   };
 
   return (
@@ -73,9 +74,14 @@ const SignIn = ({ onSignInSuccess }) => {
           onChange={(e) => setFormData({ ...formData, password: e.target.value })} 
           required 
         />
-        {/* ✅ Submit Button */}
-        <button type="submit">Sign In</button>
+        {/* ✅ Sign In Button */}
+        <button type="submit" className="auth-button">Sign In</button>
       </form>
+      {/* ✅ Sign Up Section Positioned Closer */}
+      <div className="signup-section">
+        <p>Don't have an account?</p>
+        <button onClick={() => navigate("/signup")} className="auth-button">Sign Up</button>
+      </div>
     </div>
   );
 };
