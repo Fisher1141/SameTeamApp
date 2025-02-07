@@ -29,15 +29,6 @@ function App() {
         document.body.classList.toggle("dark-mode", storedDarkMode);
     }, []);
 
-    const toggleDarkMode = () => {
-        setDarkMode(prevMode => {
-            const newMode = !prevMode;
-            localStorage.setItem("darkMode", newMode);
-            document.body.classList.toggle("dark-mode", newMode);
-            return newMode;
-        });
-    };
-
     function AppRoutes() {
         const navigate = useNavigate();
 
@@ -86,26 +77,23 @@ function App() {
     return (
         <Router>
             <div className={`App ${darkMode ? "dark" : "light"}`}>
-                <div className="toggle-container">
-                    <div className={`toggle ${darkMode ? 'night' : ''}`} onClick={toggleDarkMode}>
-                        <div className={`notch`}>
-                            <div className="crater"></div>
-                            <div className="crater"></div>
-                        </div>
-                        <div className={`shape sm`}></div>
-                        <div className={`shape md`}></div>
-                        <div className={`shape lg`}></div>
-                    </div>
-                </div>
+                <button onClick={() => {
+                    setDarkMode(prevMode => {
+                        const newMode = !prevMode;
+                        localStorage.setItem("darkMode", newMode);
+                        document.body.classList.toggle("dark-mode", newMode);
+                        return newMode;
+                    });
+                }} className="dark-mode-toggle">
+                    {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                </button>
 
-                <div className="button-container">
-                    {currentUser && (
-                        <button onClick={() => {
-                            logoutUser();
-                            setCurrentUser(null);
-                        }}>Logout</button>
-                    )}
-                </div>
+                {currentUser && (
+                    <button onClick={() => {
+                        logoutUser();
+                        setCurrentUser(null);
+                    }}>Logout</button>
+                )}
                 
                 <AppRoutes />
             </div>
