@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import bcrypt from "bcryptjs";
-import { getUsers, saveUsers, initializeLocalStorage } from "./utils/localStorageUtils";
-import "../components/styles/signup.css";
+import { getUsers, saveUsers, initializeLocalStorage } from "../utils/localStorageUtils";
+import "../styles/signup.css";
 
 const SignUp = () => {
   const navigate = useNavigate();

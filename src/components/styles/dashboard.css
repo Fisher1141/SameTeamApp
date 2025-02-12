@@ -1,14 +1,13 @@
+/* File Name: dashboard.css */
 
 /* Basic styling for the sign-up and dashboard pages */
 body {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     font-family: 'Arial', sans-serif;
     background: #f0f0f0;
+    overflow: auto; /* ✅ Ensures scrolling */
+    height: 100vh;
 }
 
 /* Container for forms and dashboard */
@@ -20,6 +19,14 @@ body {
     width: 90%;
     max-width: 600px;
     text-align: center;
+    margin-top: 20px; /* ✅ Prevents hiding content at the top */
+}
+
+/* Scrollable content */
+.dashboard-container {
+    overflow-y: auto; /* ✅ Enables scrolling */
+    max-height: 90vh; /* ✅ Prevents excessive height */
+    padding-bottom: 20px;
 }
 
 /* Input fields */
@@ -96,18 +103,6 @@ button:hover {
     border-radius: 5px;
 }
 
-/* List styling */
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-ul li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    font-size: 18px;
-}
-
 /* Adjustments for responsiveness */
 @media (max-width: 600px) {
     .container {
@@ -117,4 +112,16 @@ ul li {
     .dashboard-header {
         font-size: 20px;
     }
+}
+
+/* Home Page Styling */
+.home-container {
+    text-align: center;
+    padding: 50px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 600px;
+    margin: 40px auto;
 }

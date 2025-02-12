@@ -1,17 +1,13 @@
-// File Name: App.js
-
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { initializeLocalStorage, getCurrentUser, authenticateUser, logoutUser } from "./components/utils/localStorageUtils";
-import SignUp from './components/pages/SignUp';
-import SignIn from './components/pages/SignIn';
-import ProfileSetup from './components/pages/ProfileSetup';
-import ParentDashboard from './components/pages/ParentDashboard';
-import ChildDashboard from './components/pages/ChildDashboard';
-import ChildRewards from './components/pages/ChildRewards'; // ✅ Ensure this import exists
-import ParentRewards from './components/pages/ParentRewards';
-import HomePage from './components/pages/HomePage';
+import SignUp from './components/SignUp';
+import SignIn from './components/SignIn';
+import ProfileSetup from './components/ProfileSetup';
+import ParentDashboard from './components/ParentDashboard';
+import ChildDashboard from './components/ChildDashboard';
+import HomePage from './components/HomePage'; // Import your new HomePage component
 
 function App() {
     const [currentUser, setCurrentUser] = useState(null);
@@ -46,9 +42,7 @@ function App() {
 
         useEffect(() => {
             const user = getCurrentUser();
-            const currentPath = window.location.pathname; // Get current page path
-        
-            if (user && !["/parent-rewards","/child-rewards", "/signup", "/profile-setup"].includes(currentPath)) {
+            if (user) {
                 if (user.role === "Parent") {
                     navigate("/parent-dashboard");
                 } else {
@@ -56,19 +50,18 @@ function App() {
                 }
             }
         }, [navigate]);
-        
 
         const handleSignInSuccess = (email, password) => {
             if (!email || !password) {
                 alert("Please enter both email and password.");
                 return;
             }
-        
+
             const user = authenticateUser(email, password);
             if (user) {
                 console.log("User signed in successfully:", user);
                 setCurrentUser(user);
-        
+
                 if (user.role === "Parent") {
                     navigate("/parent-dashboard");
                 } else {
@@ -81,15 +74,13 @@ function App() {
 
         return (
             <Routes>
-                <Route path="/" element={<HomePage />} /> 
-                <Route path="/signin" element={<SignIn onSignInSuccess={handleSignInSuccess} />} />
+                {/* Home route with Sign Up and Login buttons */}
+                <Route path="/" element={<HomePage />} />  
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/profile-setup" element={<ProfileSetup />} />
                 <Route path="/parent-dashboard" element={<ParentDashboard />} />
                 <Route path="/child-dashboard" element={<ChildDashboard />} />
-                <Route path="/child-rewards" element={<ChildRewards />} />
-                <Route path="/parent-rewards" element={<ParentRewards />} />
-
+                <Route path="/signin" element={<SignIn onSignInSuccess={handleSignInSuccess} />} />
             </Routes>
         );
     }
@@ -118,7 +109,7 @@ function App() {
                         }}>Logout</button>
                     )}
                 </div>
-                
+
                 <AppRoutes />
             </div>
         </Router>

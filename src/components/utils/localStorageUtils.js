@@ -55,12 +55,45 @@ export const logoutUser = () => {
     localStorage.removeItem("loggedInUser");
 };
 
-// ✅ Retrieve chores from localStorage
-export const getChores = () => JSON.parse(localStorage.getItem("chores")) || [];
+// ✅ Retrieve chores from localStorage, ensuring they have a default `points` value
+export const getChores = () => {
+    const chores = JSON.parse(localStorage.getItem("chores")) || [];
+    return chores.map(chore => ({
+        ...chore,
+        points: chore.points || 5 // ✅ Default points to 5 if not set
+    }));
+};
 
-// ✅ Add a new chore to localStorage
+// ✅ Save updated chores to localStorage
+export const saveChores = (chores) => {
+    localStorage.setItem("chores", JSON.stringify(chores));
+};
+
+// ✅ Add a new chore with a points value
 export const addChoreToStorage = (chore) => {
     const chores = getChores();
-    chores.push(chore);
-    localStorage.setItem("chores", JSON.stringify(chores));
+    const newChore = {
+        ...chore,
+        points: chore.points || 5 // ✅ Default to 5 points if not provided
+    };
+    chores.push(newChore);
+    saveChores(chores);
+};
+
+// ✅ Update points for a specific user
+export const updateUserPoints = (username, points) => {
+    const users = getUsers();
+    const userIndex = users.findIndex(user => user.username === username);
+    
+    if (userIndex !== -1) {
+        users[userIndex].points = points;
+        saveUsers(users);
+    }
+};
+
+// ✅ Retrieve points for a specific user
+export const getUserPoints = (username) => {
+    const users = getUsers();
+    const user = users.find(user => user.username === username);
+    return user ? user.points || 0 : 0;
 };
