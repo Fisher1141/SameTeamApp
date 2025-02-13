@@ -1,4 +1,3 @@
-
 body {
   display: flex;
   justify-content: center; /* Centers horizontally */
@@ -22,26 +21,24 @@ body {
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-
 body.dark-mode .App {
-  background:  #280137; /* Dark background */
-    color: #E0E0E0;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Soft purple glow */
+  background: #280137; /* Dark background */
+  color: #E0E0E0;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Soft purple glow */
 }
-
 
 /* Toggle button styling */
 .toggle {
-  height: 40px; /* Reduced height */
-  width: 80px; /* Reduced width */
+  height: 40px;
+  width: 80px;
   border-radius: 50px;
-  margin: 0; /* Remove margin */
+  margin: 0;
   background-image: linear-gradient(rgb(15, 119, 203), skyblue);
-  position: absolute; /* Absolute positioning */
-  top: 15px; /* Move it closer to the top */
-  right:30px; /* Move it to the right */
+  position: absolute;
+  top: 15px;
+  right: 30px;
   cursor: pointer;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Soft purple glow */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
 
 .toggle.night {
@@ -49,8 +46,8 @@ body.dark-mode .App {
 }
 
 .notch {
-  height: 35px; /* Smaller notch size */
-  width: 35px; /* Smaller width */
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
   background: rgb(255, 208, 0);
   position: absolute;
@@ -73,28 +70,13 @@ body.dark-mode .App {
   opacity: 0.4;
 }
 
-.night .crater:first-child {
-  left: 8px;
-  top: 7px;
-  height: 8px; /* More circular */
-  width: 10px;  /* More circular */
-  transform: rotate(145deg);
-}
-
-.night .crater:last-child {
-  right: 5px;  /* Adjusted to move it more to the right */
-  top: 15px;
-  height: 15px; /* More circular */
-  width: 18px;  /* More circular */
-  transform: rotate(145deg);
-}
-
 .night > .notch {
   background: whitesmoke;
   box-shadow: 0 0 5px whitesmoke;
-  transform: translate(35px, 0); /* Adjusted to keep within the box */
+  transform: translate(35px, 0);
 }
 
+/* Shape styling */
 .shape {
   position: absolute;
   background: whitesmoke;
@@ -103,29 +85,29 @@ body.dark-mode .App {
 }
 
 .shape.sm {
-  height: 2px; /* Smaller size */
-  width: 20px; /* Smaller size */
+  height: 2px;
+  width: 20px;
   top: 80%;
   left: 70%;
 }
 
 .shape.md {
-  height: 5px; /* Smaller size */
-  width: 40px; /* Smaller size */
+  height: 5px;
+  width: 40px;
   top: 25%;
   left: 25%;
   z-index: 2;
 }
 
 .shape.lg {
-  height: 10px; /* Smaller size */
-  width: 60px; /* Smaller size */
-  bottom: 13px; /* Keep the previous bottom value */
+  height: 10px;
+  width: 60px;
+  bottom: 13px;
   left: 25%;
 }
 
 .shape.lg.adjusted {
-  bottom: 30px; /* Moved down */
+  bottom: 30px;
 }
 
 .night .shape {
@@ -133,29 +115,7 @@ body.dark-mode .App {
   box-shadow: 0 0 10px 2px violet;
 }
 
-.night .shape.sm {
-  height: 3px;
-  width: 3px;
-  transform: translate(-30px, 0);
-}
-
-.night .shape.sm:first-of-type {
-  transform: translate(-50px, -5px);
-}
-
-.night .shape.md {
-  height: 6px;
-  width: 6px;
-  transform: translate(8px, 0);
-}
-
-.night .shape.lg {
-  height: 10px;
-  width: 10px;
-  transform: translate(-5px, 0);
-}
-
-/* Position the icons (sun/moon) */
+/* Icon positioning */
 .icon-container {
   position: absolute;
   top: 50%;
@@ -168,20 +128,20 @@ body.dark-mode .App {
 }
 
 .icon {
-  width: 24px; /* Reduced icon size */
+  width: 24px;
   height: 24px;
   transition: all 0.3s ease;
 }
 
-/* Adjust moon position */
 .toggle.night .notch {
-  transform: translate(40px, 0); /* Adjusted to move the moon a little further */
+  transform: translate(40px, 0);
 }
 
 .toggle-container {
-  margin-bottom: 20px; /* Spacing between the toggle and form */
+  margin-bottom: 20px;
 }
 
+/* Form styling */
 .form-container {
   width: 100%;
   max-width: 400px;
@@ -192,7 +152,7 @@ body.dark-mode .App {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  align-items: center; /* Center the button container horizontally */
+  align-items: center; /* Center form contents */
 }
 
 form {
@@ -205,6 +165,7 @@ form div {
   margin-bottom: 10px;
 }
 
+/* Button styling */
 button {
   padding: 10px;
   background-color: #3749eb;
@@ -215,25 +176,23 @@ button {
   width: 100%;
   margin: 5px;
   display: flex;
-  justify-content: center; /* Center the content horizontally */
-  align-items: center; /* Center the content vertically */
-
+  justify-content: center;
+  align-items: center;
 }
 
 body.dark-mode button {
-  padding: 10px;
   background-color: #9014ca;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100%;
 }
 
 button:hover {
   background-color: #2004ad;
 }
 
+body.dark-mode button:hover {
+  background-color: #5400b3;
+}
+
+/* Input styling */
 select, input {
   width: 100%;
   padding: 8px;
@@ -242,11 +201,6 @@ select, input {
   border: 1px solid #ddd;
 }
 
-label {
-  font-size: 16px;
-}
-
-/* Input fields */
 input {
   padding: 15px;
   margin: 10px;
@@ -262,7 +216,7 @@ input:focus {
   border-color: #007bff;
 }
 
-/* Chore and message list */
+/* List styling */
 ul {
   list-style-type: none;
   padding: 0;
@@ -292,7 +246,7 @@ body.dark-mode li {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -324,18 +278,18 @@ body.dark-mode li {
 }
 
 .modal-content button:hover {
-  background-color: #0056b3; /* Hover effect in light mode */
+  background-color: #0056b3;
 }
 
 body.dark-mode .modal-content button:hover {
-  background-color: #5400b3; /* Hover effect in dark mode */
+  background-color: #5400b3;
 }
 
+/* Logo */
 .logo {
-  margin-bottom: 40px; /* Add space below the logo */
+  margin-bottom: 40px;
 }
 
 body.dark-mode .logo img {
-  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1)); /* Maximum glow effect */
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1));
 }
-

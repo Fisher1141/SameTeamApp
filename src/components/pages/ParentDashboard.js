@@ -1,13 +1,17 @@
 // File Name: ParentDashboard.js
 
 import React, { useState, useEffect } from 'react';
-import { getCurrentUser, getUsers, getChores, addChoreToStorage } from "./utils/localStorageUtils"; 
+import { getCurrentUser, getUsers, getChores, addChoreToStorage } from "../utils/localStorageUtils"; 
+import "../styles/dashboard.css";
+import { useNavigate } from 'react-router-dom'; // Add this line
 
 function ParentDashboard() {
     const [chores, setChores] = useState([]); // ✅ State to store chores
     const [newChore, setNewChore] = useState(''); // ✅ State to track new chore input
     const [assignedTo, setAssignedTo] = useState(''); // ✅ State to track chore assignment
     const [chorePoints, setChorePoints] = useState(10); // ✅ Default points for each chore
+
+    const navigate = useNavigate(); // Initialize navigation
 
     // ✅ Get list of children from localStorage
     const familyMembers = getUsers().filter(user => user.role === "Child");
@@ -44,6 +48,11 @@ function ParentDashboard() {
             <h2>Parent Dashboard</h2>
             <p>Welcome, {currentUser ? currentUser.username : "Parent"}! Manage your family's chores here.</p>
             
+            {/* ✅ New Button to Navigate to ParentRewards */}
+            <button onClick={() => navigate('/parent-rewards')} className="button">
+                Go to Parent Rewards
+            </button>
+
             {/* ✅ Form to Add a New Chore */}
             <div>
                 <h3>Add a Chore</h3>

@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 // ✅ Import the utility functions from the correct path
-import { getCurrentUser } from "./utils/localStorageUtils"; // Removed getTeamName (not in localStorageUtils.js)
+import { getCurrentUser } from "../utils/localStorageUtils"; // Removed getTeamName (not in localStorageUtils.js)
 import ParentDashboard from './ParentDashboard';
 import ChildDashboard from './ChildDashboard';
-import "../components/styles/signup.css";
+import "../styles/signup.css";
 
 // ✅ Function to retrieve team name from localStorage
 const getTeamName = () => localStorage.getItem("teamName") || "";

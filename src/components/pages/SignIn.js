@@ -1,9 +1,9 @@
 // File Name: SignIn.js
 
 import React, { useState } from "react";
-import { authenticateUser } from "../components/utils/localStorageUtils"; // ✅ Ensure correct import path
+import { authenticateUser } from "../utils/localStorageUtils"; // ✅ Ensure correct import path
 import { useNavigate } from "react-router-dom";
-import "../components/styles/signup.css";
+import "../styles/signup.css";
 
 const SignIn = ({ onSignInSuccess }) => {
   const [formData, setFormData] = useState({ email: "", password: "" }); // ✅ State for login form inputs
