@@ -192,7 +192,6 @@ body.dark-mode .App {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  align-items: center; /* Center the button container horizontally */
 }
 
 form {
@@ -205,6 +204,7 @@ form div {
   margin-bottom: 10px;
 }
 
+/* Centering the button within its container */
 button {
   padding: 10px;
   background-color: #3749eb;
@@ -217,7 +217,6 @@ button {
   display: flex;
   justify-content: center; /* Center the content horizontally */
   align-items: center; /* Center the content vertically */
-
 }
 
 body.dark-mode button {
@@ -228,12 +227,33 @@ body.dark-mode button {
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
+  margin: 5px;
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
 }
 
 button:hover {
   background-color: #2004ad;
 }
 
+body.dark-mode button:hover {
+  background-color: #5400b3;
+}
+
+/* Centering the button container */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the button container horizontally */
+}
+
+button:hover {
+  background-color: #2004ad;
+}
+body.dark-mode button:hover {
+  background-color: #5400b3;
+}
 select, input {
   width: 100%;
   padding: 8px;
@@ -338,4 +358,8 @@ body.dark-mode .modal-content button:hover {
 body.dark-mode .logo img {
   filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1)); /* Maximum glow effect */
 }
+
+
+
+
 

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { getCurrentUser, getUserPoints, updateUserPoints, getChores } from "../utils/localStorageUtils";
 import { useNavigate } from 'react-router-dom';
-import '../styles/dashboard.css';
+
 
 function ChildDashboard() {
     const [chores, setChores] = useState([]);

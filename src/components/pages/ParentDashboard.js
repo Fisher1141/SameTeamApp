@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { getCurrentUser, getUsers, getChores, addChoreToStorage } from "../utils/localStorageUtils"; 
-import "../styles/dashboard.css";
 import { useNavigate } from 'react-router-dom'; // Add this line
 
 function ParentDashboard() {

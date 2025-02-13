@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { getCurrentUser, getUsers, saveUsers } from "../utils/localStorageUtils";
-import "../styles/dashboard.css";
+
 
 function ChildRewards() {
     const [points, setPoints] = useState(0);
