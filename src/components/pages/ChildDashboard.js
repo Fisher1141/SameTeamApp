@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { getCurrentUser, getUserPoints, updateUserPoints, getChores } from "../utils/localStorageUtils";
 import { useNavigate } from 'react-router-dom';
 
-
 function ChildDashboard() {
     const [chores, setChores] = useState([]);
     const [points, setPoints] = useState(0);
@@ -26,10 +25,10 @@ function ChildDashboard() {
             if (chore.id === choreId) {
                 const updatedChore = { ...chore, completed: !chore.completed };
 
-                // Use the chore's specific points value
+                // Adjust points accordingly
                 const newPoints = updatedChore.completed 
-                    ? points + (chore.points || 0)  // Add the specific chore points
-                    : Math.max(points - (chore.points || 0), 0); // Subtract on undo
+                    ? points + (chore.points || 0)  // Add points when completed
+                    : Math.max(points - (chore.points || 0), 0); // Subtract points when undone
 
                 setPoints(newPoints);
                 updateUserPoints(currentUser.username, newPoints);
@@ -60,9 +59,13 @@ function ChildDashboard() {
                     {chores.map(chore => (
                         <li key={chore.id} style={{ textDecoration: chore.completed ? "line-through" : "none" }}>
                             {chore.text} - {chore.completed ? "Completed" : "Pending"} ({chore.points} pts)
-                            <button onClick={() => toggleChoreCompletion(chore.id)}>
-                                {chore.completed ? "Undo" : "Complete"}
-                            </button>
+                            
+                            {/* ✅ Hide button if task is completed */}
+                            {!chore.completed && (
+                                <button onClick={() => toggleChoreCompletion(chore.id)}>
+                                    Complete
+                                </button>
+                            )}
                         </li>
                     ))}
                 </ul>
